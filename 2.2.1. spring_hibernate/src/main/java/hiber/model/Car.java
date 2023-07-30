@@ -1,26 +1,20 @@
 package hiber.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "cars")
-public class Car {
+public class Car implements Serializable {
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
+    @Id
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id" , referencedColumnName = "id")
     private User user;
+
+    @Column
     private String model;
+    @Column
     private int series;
 
 
@@ -40,11 +34,26 @@ public class Car {
         this.model = model;
     }
 
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public int getSeries() {
         return series;
     }
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+
+    @Override
+    public String toString() {
+        return model + " " + series;
     }
 }
