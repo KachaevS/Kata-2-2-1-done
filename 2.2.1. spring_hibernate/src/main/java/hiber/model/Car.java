@@ -8,8 +8,11 @@ import java.io.Serializable;
 public class Car implements Serializable {
 
     @Id
-    @OneToOne
-    @JoinColumn(name = "id" , referencedColumnName = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+
+    @OneToOne (mappedBy = "car")
     private User user;
 
     @Column

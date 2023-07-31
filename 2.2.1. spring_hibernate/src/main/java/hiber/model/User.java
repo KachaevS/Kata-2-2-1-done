@@ -16,7 +16,8 @@ public class User {
         this.email = email;
     }
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "car")
     private Car car;
 
     public Car getCar() {
@@ -79,5 +80,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
     }
 }
