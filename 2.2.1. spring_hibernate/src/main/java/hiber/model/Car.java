@@ -11,12 +11,12 @@ public class Car implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
     @OneToOne (mappedBy = "car")
     private User user;
 
     @Column
     private String model;
+
     @Column
     private int series;
 
@@ -36,7 +36,6 @@ public class Car implements Serializable {
     public void setModel(String model) {
         this.model = model;
     }
-
 
     public User getUser() {
         return user;

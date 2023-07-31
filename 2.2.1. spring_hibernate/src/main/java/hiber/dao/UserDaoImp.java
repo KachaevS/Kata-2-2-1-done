@@ -13,31 +13,29 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
-   private SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-   @Override
-   public void add(User user) {
-      sessionFactory.getCurrentSession().save(user);
-   }
+    @Override
+    public void add(User user) {
+        sessionFactory.getCurrentSession().save(user);
+    }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public List<User> listUsers() {
-      TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
-      return query.getResultList();
-   }
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listUsers() {
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        return query.getResultList();
+    }
 
-   @Override
-   public User getUserByCar(String carModel, int carSeries) {
-      User user = null;
-      Query <User> query = sessionFactory.getCurrentSession().createQuery("SELECT u FROM User u JOIN u.car c WHERE c.model = :model AND c.series = :series", User.class);
-
-      query.setParameter("model", carModel);
-      query.setParameter("series", carSeries);
-      user = query.uniqueResult();
-      return user;
-
-   }
-
+    @Override
+    public User getUserByCarModelAndSeries(String carModel, int carSeries) {
+        User user = null;
+        Query<User> query = sessionFactory.getCurrentSession()
+                .createQuery("SELECT u FROM User u JOIN u.car c WHERE c.model = :model AND c.series = :series", User.class);
+        query.setParameter("model", carModel);
+        query.setParameter("series", carSeries);
+        user = query.uniqueResult();
+        return user;
+    }
 }

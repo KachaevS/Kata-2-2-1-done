@@ -8,25 +8,9 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-    public User(Car car, String firstName, String lastName, String email) {
-        this.car = car;
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "car")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car")
     private Car car;
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,10 +28,27 @@ public class User {
     public User() {
     }
 
+    public User(Car car, String firstName, String lastName, String email) {
+        this.car = car;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public Long getId() {
