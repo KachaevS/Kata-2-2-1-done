@@ -1,7 +1,5 @@
 package hiber.model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 
 @Entity
@@ -30,18 +28,11 @@ public class User {
 
     public User(Car car, String firstName, String lastName, String email) {
         this.car = car;
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-
-    public User(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
 
     public Car getCar() {
         return car;
@@ -86,5 +77,15 @@ public class User {
     @Override
     public String toString() {
         return firstName + " " + lastName;
+    }
+
+    public String toStringFull() {
+        return "User{" +
+                "car=" + car +
+                ", id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
