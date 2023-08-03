@@ -10,6 +10,16 @@ public class User {
     @JoinColumn(name = "car")
     private Car car;
 
+    public User(Car car, String firstName, String lastName, String email) {
+        this.car = car;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public User() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,23 +33,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    public User() {
-    }
-
-    public User(Car car, String firstName, String lastName, String email) {
-        this.car = car;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-
     public Car getCar() {
         return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
     }
 
     public Long getId() {

@@ -14,7 +14,6 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
-
       userService.add
               (new User(new Car ("VAZ", 2110), "User1", "Lastname1", "user1@mail.ru"));
       userService.add
@@ -31,7 +30,7 @@ public class MainApp {
       }
 
       System.out.println("Запрос на поиск пользователя по автомобилю выполнен:");
-      System.out.println(userService.getUserByCarModelAndSeries("VAZ",2112).toString());
+      System.out.println(userService.getUserByCarModelAndSeries("VAZ",2112));
 
       context.close();
    }

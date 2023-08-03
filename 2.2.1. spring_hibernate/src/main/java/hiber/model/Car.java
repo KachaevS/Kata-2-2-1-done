@@ -1,5 +1,7 @@
 package hiber.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,8 +13,23 @@ public class Car implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
     @OneToOne (mappedBy = "car")
     private User user;
+
+
+    public Car(User user) {
+        this.user = user;
+    }
+
+    public Car() {
+    }
+
+    public Car(String model, int series) {
+        this.model = model;
+        this.series = series;
+        this.user = user;
+    }
 
     @Column
     private String model;
@@ -21,13 +38,6 @@ public class Car implements Serializable {
     private int series;
 
 
-    public Car() {
-    }
-
-    public Car(String model, int series) {
-        this.model = model;
-        this.series = series;
-    }
 
     public String getModel() {
         return model;
