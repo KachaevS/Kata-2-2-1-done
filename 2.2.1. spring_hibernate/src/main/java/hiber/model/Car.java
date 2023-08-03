@@ -1,7 +1,5 @@
 package hiber.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,17 +16,12 @@ public class Car implements Serializable {
     private User user;
 
 
-    public Car(User user) {
-        this.user = user;
-    }
-
     public Car() {
     }
 
     public Car(String model, int series) {
         this.model = model;
         this.series = series;
-        this.user = user;
     }
 
     @Column
